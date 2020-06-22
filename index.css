@@ -1,0 +1,52 @@
+
+:root {
+    --light-gray-bg: #e5e5e5;
+    --dark-gray-bg: #b5b5b5;
+    --dark-purple-bg: #483d8b;
+}
+
+/* typography */
+
+
+
+
+/* layout */
+
+header {
+
+}
+
+.container {
+    display: flex;
+}
+
+.container-header {
+    background-color: ;
+    height: 40px;
+    background-color: var(--dark-purple-bg);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+main {
+    height: 100%;
+
+}
+
+.container-side-bar {
+    width: 25%;
+    min-width: 16em;
+    background-color: var(--light-gray-bg);
+    height: 100%;
+    border-right: solid 2px var(--dark-gray-bg);
+    flex-direction: column;
+}
+
+.container-todo-list {
+    min-width: 75%;
+    flex-direction: column;
+}
