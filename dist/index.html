@@ -12,13 +12,38 @@
     <body>
 
         <header>
-            <div class = 'container container-header'></div>
+            <div class = 'container container-header'>
+                <div class = 'burger-barn' id = "burger-button">
+                    <div class = 'burger'></div>
+                    <div class = 'burger'></div>
+                    <div class = 'burger'></div>
+                </div>
+            </div>
 
         </header>
 
-        <main class = 'container container-main'>
-            <div class = "container container-side-bar"></div>
-            <div class = 'container container-todo-list'></div>
+        <main class = 'container'>
+            <div class = "container container-side-bar" id = 'menu'>
+                <nav class = 'nav-side-bar'>
+                    <ul>
+                        <li>All Tasks <span class = 'count' id = 'all-tasks-count'>2</span></li>
+                        <li>Today</li>
+                        <li>Next 7 Days<span class = 'count' id = 'all-tasks-count'>2</span></li>
+                        <li>+ Add Project</li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class = 'container container-todo-list' id = 'todo-list'>
+                <div class = 'container container-todo-list-header'>
+                    <h1 id = 'task-list-name'>All Tasks</h1>
+                </div>
+                <div id = 'todo-list'>
+                    <div class = 'todo-task'><span><button class = 'check-button'></button><p>Get tea with the Maharajah</p></span> <p>Personal</p></div>
+                    <div class = 'todo-task'><span><button class = 'check-button'></button><p>Get tea with the Maharajah</p></span> <p>Personal</p></div>
+                    <div class = 'button' id = 'add-task'>+ Add Task</div>
+                </div>
+            </div>
         </main>
 
 
