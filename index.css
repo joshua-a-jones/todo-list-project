@@ -3,25 +3,36 @@
     --light-gray-bg: #e5e5e5;
     --dark-gray-bg: #b5b5b5;
     --dark-purple-bg: #483d8b;
+    --light-purple-bg: #D1D6FF;
 }
 
 /* typography */
 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
 
+.count {
+    color: darkslateblue;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-left: 0.5em;
+}
+
+h1 {
+    font-size: 1.6em;
+}
 
 
 /* layout */
 
-header {
-
-}
 
 .container {
     display: flex;
 }
 
 .container-header {
-    background-color: ;
+   
     height: 40px;
     background-color: var(--dark-purple-bg);
 }
@@ -38,8 +49,7 @@ main {
 }
 
 .container-side-bar {
-    width: 25%;
-    min-width: 16em;
+    width: 16em;
     background-color: var(--light-gray-bg);
     height: 100%;
     border-right: solid 2px var(--dark-gray-bg);
@@ -47,6 +57,98 @@ main {
 }
 
 .container-todo-list {
-    min-width: 75%;
+    flex:1;
+    max-width: 1280px;
     flex-direction: column;
+    padding: 2em;
 }
+
+nav {
+    padding: none;
+    margin: none;
+    
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.container-side-bar ul {
+    margin-top: 2em;
+
+} 
+
+.container-side-bar li {
+    margin: 1em 0 1em 2em;
+    vertical-align: middle;
+    padding: 0.4em 0;
+}
+
+.container-side-bar li:hover, #add-task:hover {
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.container-todo-list-header {
+    
+}
+
+#todo-list .button {
+    margin: 1em 0 0 2em;
+}
+
+.todo-task {
+    display: flex;
+    border-bottom: solid 1px var(--dark-gray-bg);
+    padding: 0.75em 0;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.todo-task:hover {
+    background-color: var(--light-purple-bg);
+
+}
+
+.todo-task p {
+    padding:0;
+    margin: 0;
+
+}
+
+.todo-task span {
+    display: flex;
+    align-items: center;
+
+}
+
+.check-button {
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    border: solid 1px var(--dark-purple-bg);
+    margin: 0 1em 0 0;
+    padding:0;
+    background-color: var(--light-gray-bg);
+
+}
+
+.burger-barn {
+    margin: 0 0 0 2em;
+}
+
+.burger {
+    width: 35px;
+    height: 5px;
+    background-color: var(--dark-gray-bg);
+    margin: 6px 0;
+    border-radius: 2.5px;
+  }
+
+  .burger-barn:hover {
+      filter: brightness(50%);
+  }
+    
