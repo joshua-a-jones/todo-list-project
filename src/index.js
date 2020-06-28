@@ -22,12 +22,15 @@ import {format} from 'date-fns'
     document.getElementById('add-task-btn').addEventListener('click', toggleAddTaskForm);
     document.getElementById('add-project-btn').addEventListener('click', toggleAddProjectForm);
     document.getElementById('submit-new-task-btn').addEventListener('click', createNewTask)
+    document.getElementById('new-task-form').addEventListener('keyup', (e) => {if (e.keyCode === 13){createNewTask()}});
     
     //controls program flow when new task is created
     function createNewTask() {
         var title = document.getElementById('new-task-title').value;
         var date = document.getElementById('new-task-date').value;
         var project = document.getElementById('new-task-project').value
+
+        if (!title){return;}
 
         const newTask = task(title, '', date, project);
 

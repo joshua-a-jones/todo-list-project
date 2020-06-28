@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export function todoList() {
     var list = new Array();
 
@@ -36,6 +38,12 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
         return date;
     }
 
+    function formatDate(){
+        
+        if (!getDate()) {return ''};
+        return format(new Date(getDate()), 'MMMM do');
+    }
+
     function getName() {
         return name;
     }
@@ -44,7 +52,7 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
         const taskDiv = document.createElement('div')
         taskDiv.classList += 'todo-task';
 
-        taskDiv.innerHTML = `<span><button class = 'check-button'></button><p>${title}</p></span> <p>${project}</p>`
+        taskDiv.innerHTML = `<span><button class = 'check-button'></button><p>${title}</p></span> <p>${project}</p> <p>${formatDate()}</p>`
 
         return taskDiv;
     }
