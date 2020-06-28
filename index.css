@@ -25,7 +25,15 @@ h1 {
 
 
 /* layout */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
 
+main {
+    height: 100%;
+}
 
 .container {
     display: flex;
@@ -35,19 +43,12 @@ h1 {
     height: 40px;
     background-color: var(--dark-purple-bg);
     align-items: center;
+    display: flex;
+    justify-content: space-between;
 
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
 
-main {
-    height: 100%;
-
-}
 
 .container-side-bar {
     width: 16em;
@@ -62,6 +63,10 @@ main {
     max-width: 1280px;
     flex-direction: column;
     padding: 2em;
+}
+
+.container-todo-list-header ul {
+    display: flex;
 }
 
 nav {
@@ -204,6 +209,9 @@ input[type='select'] {
     line-height: 30px;
 }
 
+.button-add-task {
+    margin: 1em 0 !important;
+}
 
 #add-project-form {
     display: flex;
@@ -216,4 +224,5 @@ input[type='select'] {
 
 #date-display {
     color:white;
+    margin: 0 2em 0 0;
 }

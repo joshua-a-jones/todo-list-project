@@ -42,20 +42,21 @@
             <div class = 'container container-todo-list'>
                 <div class = 'container container-todo-list-header'>
                     <h1 id = 'task-list-name'>All Tasks</h1>
+                   
                 </div>
 
                 <div id = 'todo-list'></div>
                 
                 <div class = 'button button-add-task' id = 'add-task-btn'>+ Add Task</div>
-                <form class = 'hidden' id = 'new-task-form'>
+                <div class = 'hidden' id = 'new-task-form'>
                     <input type = 'text' id = 'new-task-title' placeholder="Title">
                     <label for = 'project-select'>Project: </label>
                     <select name = 'project-select' id = 'new-task-project'>
-                        <option value = 'All'>No Project</option>
+                        <option value = ''>No Project</option>
                     </select>
                     <input type = 'date' id = 'new-task-date'>
                     <div class = 'button button-plus' id='submit-new-task-btn'>+</div>
-                </form>
+                </div>
 
             </div>
         </main>
