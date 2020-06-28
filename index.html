@@ -18,6 +18,7 @@
                     <div class = 'burger'></div>
                     <div class = 'burger'></div>
                 </div>
+                <div id='date-display'></div>
             </div>
 
         </header>
@@ -26,23 +27,36 @@
             <div class = "container container-side-bar" id = 'menu'>
                 <nav class = 'nav-side-bar'>
                     <ul>
-                        <li>All Tasks <span class = 'count' id = 'all-tasks-count'>2</span></li>
-                        <li>Today</li>
-                        <li>Next 7 Days<span class = 'count' id = 'all-tasks-count'>2</span></li>
-                        <li>+ Add Project</li>
+                        <li class='button'>All Tasks <span class = 'count' id = 'all-tasks-count'>2</span></li>
+                        <li class='button'>Today</li>
+                        <li class='button'>Next 7 Days<span class = 'count' id = 'all-tasks-count'>2</span></li>
+                        <li class='button' id = 'add-project-btn'>+ Add Project</li>
+                        <li id = 'add-project-form' class = 'hidden'>
+                            <input type='text' placeholder="Project Name">
+                            <div class='button button-plus' id = 'add-project-btn'>+</div>
+                        </li>
                     </ul>
                 </nav>
             </div>
 
-            <div class = 'container container-todo-list' id = 'todo-list'>
+            <div class = 'container container-todo-list'>
                 <div class = 'container container-todo-list-header'>
                     <h1 id = 'task-list-name'>All Tasks</h1>
                 </div>
-                <div id = 'todo-list'>
-                    <div class = 'todo-task'><span><button class = 'check-button'></button><p>Get tea with the Maharajah</p></span> <p>Personal</p></div>
-                    <div class = 'todo-task'><span><button class = 'check-button'></button><p>Get tea with the Maharajah</p></span> <p>Personal</p></div>
-                    <div class = 'button' id = 'add-task'>+ Add Task</div>
-                </div>
+
+                <div id = 'todo-list'></div>
+                
+                <div class = 'button button-add-task' id = 'add-task-btn'>+ Add Task</div>
+                <form class = 'hidden' id = 'new-task-form'>
+                    <input type = 'text' id = 'new-task-title' placeholder="Title">
+                    <label for = 'project-select'>Project: </label>
+                    <select name = 'project-select' id = 'new-task-project'>
+                        <option value = 'All'>No Project</option>
+                    </select>
+                    <input type = 'date' id = 'new-task-date'>
+                    <div class = 'button button-plus' id='submit-new-task-btn'>+</div>
+                </form>
+
             </div>
         </main>
 
