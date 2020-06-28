@@ -1,13 +1,25 @@
 export function toggleMenu() {
     
-    if (document.getElementById('menu').style.visibility === 'hidden') {
-        document.getElementById('menu').style.visibility = 'visible';
-        document.getElementById('menu').style.width = '16em';
+    if (document.getElementById('menu').classList.contains('hidden')) {
+        document.getElementById('menu').classList.remove('hidden');
     } else {
-        document.getElementById('menu').style.visibility = 'hidden';
-        document.getElementById('menu').style.width = '0';
 
+        document.getElementById('menu').classList.add('hidden');
     }
     
     
+}
+
+export function toggleAddProjectForm() {
+    
+    const addButton = document.getElementById('add-project-btn');
+    const addProjectForm = document.getElementById('add-project-form');
+    
+    var flag = addButton.classList.contains('hidden');
+
+    if (!flag) {
+        addButton.classList.add('hidden');
+        addProjectForm.classList.remove('hidden');
+    }
+
 }

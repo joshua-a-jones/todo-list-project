@@ -4,15 +4,24 @@ export function todoList() {
     function addItem(item) {
         list.push(item);
         sortList();
+    
     }
 
     function sortList() {
         list.sort((a,b) => (a.getDate() > b.getDate()) ? 1 : -1);
     }
 
+    function getList() {
+        return list;
+    }
 
+    function displayList(div) {
+        for (let i = 0; i<list.length; i++) {
+            div.appendChild(list[i].makeDomElement());
+        }
+    }
 
-    return {addItem}
+    return {addItem, getList, displayList};
 }
 
 
@@ -36,6 +45,8 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
         taskDiv.classList += 'todo-task';
 
         taskDiv.innerHTML = `<span><button class = 'check-button'></button><p>${title}</p></span> <p>${project}</p>`
+
+        return taskDiv;
     }
 
     return {getDate, getName, makeDomElement};
@@ -52,3 +63,5 @@ export function project(inputName) {
 
     return { getName}
 }
+
+

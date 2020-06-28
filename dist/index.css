@@ -32,9 +32,10 @@ h1 {
 }
 
 .container-header {
-   
     height: 40px;
     background-color: var(--dark-purple-bg);
+    align-items: center;
+
 }
 
 html, body {
@@ -86,17 +87,18 @@ ul {
     padding: 0.4em 0;
 }
 
-.container-side-bar li:hover, #add-task:hover {
+.button:hover {
     font-weight: 800;
     cursor: pointer;
 }
 
-.container-todo-list-header {
-    
+
+#todo-list-container .button {
+    margin: 1em 0 0 2em;
 }
 
-#todo-list .button {
-    margin: 1em 0 0 2em;
+.curent-tab {
+    font-weight: 800;
 }
 
 .todo-task {
@@ -138,13 +140,15 @@ ul {
 
 .burger-barn {
     margin: 0 0 0 2em;
+    display: flex;
+    flex-direction: row;
 }
 
 .burger {
-    width: 35px;
-    height: 5px;
+    width: 6px;
+    height: 32px;
     background-color: var(--dark-gray-bg);
-    margin: 6px 0;
+    margin: 0 3px;
     border-radius: 2.5px;
   }
 
@@ -152,3 +156,64 @@ ul {
       filter: brightness(50%);
   }
     
+input[type="text"] {
+    border: solid 1px var(--dark-gray-bg);
+    width:50%;
+    font-size: 1em;
+    height: 2em;
+}
+
+input[type='date']{
+    border: solid 1px var(--dark-gray-bg);
+    height: 2em;
+}
+
+input[type='select'] {
+    font-size: 16px;
+}
+
+#new-task-form {
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    height: 2em;
+    align-items: center;
+    margin: 1em 0;
+
+}
+
+
+.hidden {
+    visibility: hidden;
+    height: 0 !important;
+    width: 0 !important;
+    display: none;
+}
+
+.button-plus {
+    box-shadow: 1.5px 1.5px 2px 1px var(--dark-gray-bg);
+    background-color: var(--dark-purple-bg);
+    color: white;
+    border-radius: 50%;
+    font-size: 30px;
+    height: 1em;
+    width:1em;
+    margin:0 !important;
+    padding:0;
+    text-align: center;
+    line-height: 30px;
+}
+
+
+#add-project-form {
+    display: flex;
+
+}
+
+#add-project-form .button {
+    margin: 0 1em !important;
+}
+
+#date-display {
+    color:white;
+}
