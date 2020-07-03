@@ -56,6 +56,7 @@ main {
     height: 100%;
     border-right: solid 2px var(--dark-gray-bg);
     flex-direction: column;
+    padding-top: 2em;
 }
 
 .container-todo-list {
@@ -81,15 +82,22 @@ ul {
     padding: 0;
 }
 
-.container-side-bar ul {
-    margin-top: 2em;
 
-} 
 
 .container-side-bar li {
     margin: 1em 0 1em 2em;
     vertical-align: middle;
     padding: 0.4em 0;
+}
+
+
+
+#projects-list:before {
+    display: block;
+    content:'';
+    margin:0 auto;
+    border-top: solid 1px var(--dark-purple-bg);
+    width: 90%;
 }
 
 .button:hover {
@@ -107,30 +115,22 @@ ul {
 }
 
 .todo-task {
-    display: flex;
+    display: grid;
     border-bottom: solid 1px var(--dark-gray-bg);
-    padding: 0.75em 0;
-    justify-content: space-between;
-    align-items: center;
+    grid-template-columns: 2em 20em auto 6em 10em;
     cursor: pointer;
+    padding: 0.5em 0;
 }
 
 .todo-task:hover {
     background-color: var(--light-purple-bg);
 
 }
-
 .todo-task p {
     padding:0;
     margin: 0;
-
 }
 
-.todo-task span {
-    display: flex;
-    align-items: center;
-
-}
 
 .check-button {
     border-radius: 50%;
@@ -140,8 +140,17 @@ ul {
     margin: 0 1em 0 0;
     padding:0;
     background-color: var(--light-gray-bg);
-
 }
+
+.check-button:hover {
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.check-button:focus {
+    outline: none !important;
+}
+
 
 .burger-barn {
     margin: 0 0 0 2em;
@@ -225,4 +234,22 @@ input[type='select'] {
 #date-display {
     color:white;
     margin: 0 2em 0 0;
+}
+
+.checked {
+    position: relative;
+    filter: brightness(120%);
+    color: gray;
+    background-color:var(--light-purple-bg);
+
+}
+
+.checked:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 2%;
+    border-bottom: 1px solid var(--dark-purple-bg);
+    width: 96%;
+    
 }

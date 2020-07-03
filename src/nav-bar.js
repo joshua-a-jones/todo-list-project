@@ -20,6 +20,9 @@ export function toggleAddProjectForm() {
     if (!flag) {
         addButton.classList.add('hidden');
         addProjectForm.classList.remove('hidden');
+    } else {
+        addButton.classList.remove('hidden');
+        addProjectForm.classList.add('hidden');
     }
 
 }
