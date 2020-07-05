@@ -22,19 +22,21 @@ import { format, differenceInCalendarDays, isToday } from "date-fns";
     function displayList() {
         displayDiv.innerHTML = '';
 
+        
+
         if (activeProject === 'All Tasks') {
             for (let i = 0; i<list.length; i++) {
                 displayDiv.appendChild(list[i].getDomElement());
             }
         } else if (activeProject === 'Today') {
             for (let i = 0; i<list.length; i++){
-                if (isToday(list[i].getDate())) {
+                if (isToday(new Date(list[i].getDate()))) {
                     displayDiv.appendChild(list[i].getDomElement());
                 }
             }
         } else if (activeProject === 'Next 7 Days') {
             for (let i = 0; i<list.length; i++){
-                if (differenceInCalendarDays(list[i].getDate(), new Date()) < 7) {
+                if (differenceInCalendarDays(new Date(list[i].getDate()), new Date()) < 7) {
                     displayDiv.appendChild(list[i].getDomElement());
                 }
             }
@@ -84,13 +86,13 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
 
 
     function getDate() {
-        return new Date(date);
+        return date;
     }
 
     function formatDate(){
         
         if (!date) {return ''};
-        return format(getDate(), 'MMMM do');
+        return format(new Date(getDate()), 'MMMM do');
     }
 
     function getName() {
