@@ -23,6 +23,12 @@ export function toggleAddProjectForm() {
     } else {
         addButton.classList.remove('hidden');
         addProjectForm.classList.add('hidden');
+        clearForm();
+    }
+
+    function clearForm() {
+        document.getElementById('new-project-name').value = '';
     }
 
 }
+

@@ -11,9 +11,9 @@ import {format} from 'date-fns'
 (function controller() {
 
     //create empty todo list
-    const list = new todoList();
+    const list = new todoList(document.getElementById('todo-list'));
     const projects = projectsList();
-
+    let activeProject = '';
     
     setDate();
 
@@ -25,6 +25,12 @@ import {format} from 'date-fns'
     document.getElementById('new-task-form').addEventListener('keyup', (e) => {if (e.keyCode === 13){createNewTask()}});
     document.getElementById('submit-new-project-btn').addEventListener('click', createNewProject);
     document.getElementById('add-project-form').addEventListener('keyup', (e) => {if (e.keyCode === 13){createNewProject()}});
+    
+    const listSelectors = document.getElementsByClassName('list-select');
+    for (let i = 0; i < listSelectors.length; i++) {
+        listSelectors[i].addEventListener('click', changeActiveList);
+    }
+
 
     //controls program flow when new task is created
     function createNewTask() {
@@ -33,13 +39,8 @@ import {format} from 'date-fns'
         var project = document.getElementById('new-task-project').value
 
         if (!title){return;}
-
-        const newTask = task(title, '', date, project);
-
-        list.addItem(newTask);
-        
-        clearDiv(document.getElementById('todo-list'))
-        list.displayList(document.getElementById('todo-list'));
+        list.createNewTask(title, date, project);
+        list.displayList(activeProject);
         toggleAddTaskForm();
         
     }
@@ -51,25 +52,17 @@ import {format} from 'date-fns'
         if (!newProjectName) {return;}
 
         const newProject = project(newProjectName);
+
+        newProject.getDomElement().addEventListener('click', changeActiveList);
+
         projects.addProject(newProject);
 
         projects.displayList(document.getElementById('projects-list'));
 
-        
         document.getElementById('new-task-project').innerHTML += `<option>${newProjectName}</option>`;
-    
-
         toggleAddProjectForm();
-
-
     }
 
-
-
-
-    function clearDiv(div) {
-        div.innerHTML ='';
-    }
 
     function setDate() {
         const dateDisplay = document.getElementById('date-display');
@@ -78,6 +71,19 @@ import {format} from 'date-fns'
  
     }
 
+    function changeActiveList(e) {
+        const buttons = document.getElementsByClassName('list-select');
 
+        for (let i = 0; i<buttons.length; i++) {
+            if (buttons[i].classList.contains('active')) {
+                buttons[i].classList.remove('active');
+            }
+        }
+        e.target.classList.add('active');
+        document.getElementById('task-list-name').innerText = e.target.innerText;
+        activeProject = e.target.innerText;
+        list.setActiveProject(activeProject);
+        list.displayList();
+    }
 
 })();

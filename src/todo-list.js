@@ -1,7 +1,8 @@
 import { format } from "date-fns";
 
- export function todoList() {
+ export function todoList(displayDiv) {
     var list = new Array();
+    var activeProject = 'All Tasks'
 
 
     function addItem(item) {
@@ -18,14 +19,43 @@ import { format } from "date-fns";
         return list;
     }
 
-    function displayList(div) {
-        for (let i = 0; i<list.length; i++) {
-            div.appendChild(list[i].getDomElement());
+    function displayList() {
+        displayDiv.innerHTML = '';
+
+        if (activeProject === 'All Tasks') {
+            for (let i = 0; i<list.length; i++) {
+                displayDiv.appendChild(list[i].getDomElement());
+            }
+        } else {
+            for (let i = 0; i<list.length; i++) {
+                if (list[i].getProject() === activeProject) {
+                    displayDiv.appendChild(list[i].getDomElement());
+                }
+            }
         }
     }
 
+    function createNewTask(title, date, project) {
+        const newTask = task(title, '', date, project)
+        newTask.deleteBtn.addEventListener('click', deleteItem);
+        addItem(newTask)
 
-    return {addItem, getList, displayList};
+    }
+
+    function deleteItem(e) {
+        for (let i= 0; i < list.length; i++) {
+            if (list[i].deleteBtn === e.target) {
+                list.splice(i,1);
+            }
+        }
+        displayList(activeProject);
+    }
+
+    function setActiveProject(project) {
+        activeProject = project;
+    }
+
+    return {addItem, getList, displayList, createNewTask, setActiveProject};
 }
 
 
@@ -37,6 +67,7 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
     var date = inputDate;
     var project = inputProject;
     var checked = false;
+    const deleteBtn = makeDeleteButton();
     var DomElement = makeDomElement();
 
     function getDate() {
@@ -53,6 +84,15 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
         return name;
     }
 
+    function makeDeleteButton() {
+        const deleteBtn = document.createElement('input');
+        deleteBtn.type = 'image';
+        deleteBtn.src = './assets/remove.svg';
+        deleteBtn.classList.add('button');
+        
+        return deleteBtn;
+    }
+
     function makeDomElement() {
         const taskDiv = document.createElement('div')
         taskDiv.classList += 'todo-task';
@@ -63,6 +103,9 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
 
         const titleP = document.createElement('p');
         titleP.innerText = title;
+
+        const filler = document.createElement('div');
+        filler.innerHTML = '';
         
         const projectP = document.createElement('p');
         projectP.innerText = project;
@@ -70,10 +113,14 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
         const dateP = document.createElement('p');
         dateP.innerText = formatDate();
 
+    
+
         taskDiv.appendChild(checkButton);
         taskDiv.appendChild(titleP);
+        taskDiv.appendChild(filler);
         taskDiv.appendChild(projectP);
         taskDiv.appendChild(dateP);
+        taskDiv.appendChild(deleteBtn);
         
         return taskDiv;
     }
@@ -95,7 +142,12 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
         return DomElement;
     }
 
-    return {getDate, getName, getDomElement, toggleCheckedState};
+    function getProject() {
+        return project;
+    }
+
+
+    return {getDate, getName, getProject, getDomElement, toggleCheckedState, deleteBtn};
 }
 
 
@@ -112,6 +164,7 @@ export function project(inputName) {
         const projectDiv =  document.createElement('li');
         projectDiv.innerText = name;
         projectDiv.classList.add('button');
+        projectDiv.classList.add('list-select');
 
         return projectDiv;
     }

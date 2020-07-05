@@ -48,8 +48,6 @@ main {
 
 }
 
-
-
 .container-side-bar {
     width: 16em;
     background-color: var(--light-gray-bg);
@@ -73,7 +71,6 @@ main {
 nav {
     padding: none;
     margin: none;
-    
 }
 
 ul {
@@ -82,15 +79,12 @@ ul {
     padding: 0;
 }
 
-
-
 .container-side-bar li {
-    margin: 1em 0 1em 2em;
+    margin: 1em auto 1em 2em;
     vertical-align: middle;
     padding: 0.4em 0;
+    width: auto;
 }
-
-
 
 #projects-list:before {
     display: block;
@@ -105,7 +99,6 @@ ul {
     cursor: pointer;
 }
 
-
 #todo-list-container .button {
     margin: 1em 0 0 2em;
 }
@@ -117,7 +110,7 @@ ul {
 .todo-task {
     display: grid;
     border-bottom: solid 1px var(--dark-gray-bg);
-    grid-template-columns: 2em 20em auto 6em 10em;
+    grid-template-columns: 2em 20em auto 6em 10em 1.5em;
     cursor: pointer;
     padding: 0.5em 0;
 }
@@ -248,8 +241,12 @@ input[type='select'] {
     content: " ";
     position: absolute;
     top: 50%;
-    left: 2%;
+    left: 3%;
     border-bottom: 1px solid var(--dark-purple-bg);
-    width: 96%;
+    width: 94%;
     
+}
+
+.active {
+    font-weight: 800;
 }
