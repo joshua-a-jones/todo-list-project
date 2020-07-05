@@ -84,12 +84,12 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
 
 
     function getDate() {
-        return date;
+        return new Date(date);
     }
 
     function formatDate(){
         
-        if (!getDate()) {return ''};
+        if (!date) {return ''};
         return format(getDate(), 'MMMM do');
     }
 

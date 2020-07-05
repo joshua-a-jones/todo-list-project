@@ -38,9 +38,9 @@ import {format} from 'date-fns'
         var date = document.getElementById('new-task-date').value;
         var project = document.getElementById('new-task-project').value
 
-        console.log(new Date(date))
+        
         if (!title){return;}
-        list.createNewTask(title, new Date(date), project);
+        list.createNewTask(title, date, project);
         list.displayList(activeProject);
         toggleAddTaskForm();
         
