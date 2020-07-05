@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format, differenceInCalendarDays, isToday } from "date-fns";
 
  export function todoList(displayDiv) {
     var list = new Array();
@@ -25,6 +25,18 @@ import { format } from "date-fns";
         if (activeProject === 'All Tasks') {
             for (let i = 0; i<list.length; i++) {
                 displayDiv.appendChild(list[i].getDomElement());
+            }
+        } else if (activeProject === 'Today') {
+            for (let i = 0; i<list.length; i++){
+                if (isToday(list[i].getDate())) {
+                    displayDiv.appendChild(list[i].getDomElement());
+                }
+            }
+        } else if (activeProject === 'Next 7 Days') {
+            for (let i = 0; i<list.length; i++){
+                if (differenceInCalendarDays(list[i].getDate(), new Date()) < 7) {
+                    displayDiv.appendChild(list[i].getDomElement());
+                }
             }
         } else {
             for (let i = 0; i<list.length; i++) {
@@ -70,6 +82,7 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
     const deleteBtn = makeDeleteButton();
     var DomElement = makeDomElement();
 
+
     function getDate() {
         return date;
     }
@@ -77,7 +90,7 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
     function formatDate(){
         
         if (!getDate()) {return ''};
-        return format(new Date(getDate()), 'MMMM do');
+        return format(getDate(), 'MMMM do');
     }
 
     function getName() {

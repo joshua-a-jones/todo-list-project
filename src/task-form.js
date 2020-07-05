@@ -15,6 +15,7 @@ export function toggleAddTaskForm() {
     function clearForm() {
         document.getElementById('new-task-title').value = '';
         document.getElementById('new-task-date').value = '';
+        document.getElementById('new-task-project').value = '';
     }
 
 }
