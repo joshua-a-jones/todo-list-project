@@ -104,6 +104,7 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
         deleteBtn.type = 'image';
         deleteBtn.src = './assets/remove.svg';
         deleteBtn.classList.add('button');
+        deleteBtn.classList.add('button-icon');
         
         return deleteBtn;
     }

@@ -99,6 +99,10 @@ ul {
     cursor: pointer;
 }
 
+.button-icon:hover {
+    transform: scale(1.2);
+}
+
 #todo-list-container .button {
     margin: 1em 0 0 2em;
 }
