@@ -105,6 +105,7 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
         deleteBtn.src = './assets/remove.svg';
         deleteBtn.classList.add('button');
         deleteBtn.classList.add('button-icon');
+        deleteBtn.classList.add('task-buttons');
         
         return deleteBtn;
     }
@@ -119,21 +120,20 @@ export function task(inputTitle, inputDescription = '', inputDate, inputProject 
 
         const titleP = document.createElement('p');
         titleP.innerText = title;
-
-        const filler = document.createElement('div');
-        filler.innerHTML = '';
+        titleP.classList.add('task-title');
         
         const projectP = document.createElement('p');
         projectP.innerText = project;
+        projectP.classList.add('task-project');
 
         const dateP = document.createElement('p');
         dateP.innerText = formatDate();
+        dateP.classList.add('task-date');
 
     
 
         taskDiv.appendChild(checkButton);
         taskDiv.appendChild(titleP);
-        taskDiv.appendChild(filler);
         taskDiv.appendChild(projectP);
         taskDiv.appendChild(dateP);
         taskDiv.appendChild(deleteBtn);
