@@ -10,6 +10,8 @@ import {format} from 'date-fns'
 
 (function controller() {
 
+    checkViewportSize();
+
     //create empty todo list
     const list = new todoList(document.getElementById('todo-list'));
     const projects = projectsList();
@@ -25,14 +27,16 @@ import {format} from 'date-fns'
     document.getElementById('new-task-form').addEventListener('keyup', (e) => {if (e.keyCode === 13){createNewTask()}});
     document.getElementById('submit-new-project-btn').addEventListener('click', createNewProject);
     document.getElementById('add-project-form').addEventListener('keyup', (e) => {if (e.keyCode === 13){createNewProject()}});
-    
+    document.addEventListener('click', checkForClickOutsideMenu);
+ 
+    //add listeners to the buttons on the sidebar/drop down menu
     const listSelectors = document.getElementsByClassName('list-select');
     for (let i = 0; i < listSelectors.length; i++) {
         listSelectors[i].addEventListener('click', changeActiveList);
     }
 
 
-    //controls program flow when new task is created
+
     function createNewTask() {
         var title = document.getElementById('new-task-title').value;
         var date = document.getElementById('new-task-date').value;
@@ -45,6 +49,7 @@ import {format} from 'date-fns'
         toggleAddTaskForm();
         
     }
+
 
     function createNewProject() {
         var newProjectName = document.getElementById('new-project-name').value;
@@ -85,6 +90,32 @@ import {format} from 'date-fns'
         activeProject = e.target.innerText;
         list.setActiveProject(activeProject);
         list.displayList();
+
+        checkViewportSize();
     }
+
+    function checkViewportSize() {
+        if (document.documentElement.clientWidth < 700) {
+            toggleMenu();
+        }
+    }
+
+    function checkForClickOutsideMenu(e) {
+        if (document.documentElement.clientWidth > 700) {return;}
+        let target = e.target;
+        const menu = document.getElementById('menu');
+        if (menu.classList.contains('hidden') || target.id == 'burger-button') {return;}
+        
+        do {
+            if (target == menu) {
+                return;
+            } 
+            target = target.parentNode;
+        } while (target)
+
+        toggleMenu();
+    }
+
+
 
 })();
