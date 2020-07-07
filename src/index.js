@@ -103,8 +103,9 @@ import {format} from 'date-fns'
     function checkForClickOutsideMenu(e) {
         if (document.documentElement.clientWidth > 700) {return;}
         let target = e.target;
+        console.log(target.id);
         const menu = document.getElementById('menu');
-        if (menu.classList.contains('hidden') || target.id == 'burger-button') {return;}
+        if (menu.classList.contains('hidden') || target.id == 'burger-button' || target.classList.contains('burger')) {return;}
         
         do {
             if (target == menu) {
